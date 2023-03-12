@@ -43,9 +43,7 @@ if __name__ == "__main__":
     parser = ap.ArgumentParser()
     parser.add_argument('sequence', help = 'Sequence you want to expand')
     parser.add_argument('-e', '--edits', default = 1, help = 'Number of edits you want to expand')
-    parser.add_argument('-b', '--allowbulges', dest = 'bulges', action = 'store_true', help = 'allow bulges in edit expansions')
-    parser.set_defaults(allowbulges = False)
+    parser.add_argument('-b', '--allowbulges', dest = 'allowbulges', action = 'store_true', help = 'allow bulges in edit expansions')
     args = parser.parse_args()
 
     print('\n'.join(expand_sequences(args.sequence, edits = int(args.edits), ins = args.allowbulges)))
-#gg = expand_sequences('GTC', edits = 1, ins = False)
