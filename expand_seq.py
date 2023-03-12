@@ -42,7 +42,7 @@ def expand_sequences(*args, **kwargs):
 if __name__ == "__main__":
     parser = ap.ArgumentParser()
     parser.add_argument('sequence', help = 'Sequence you want to expand')
-    parser.add_argument('-e', '--edits', default = 1, help = 'Number of edits you want to expand')
+    parser.add_argument('-e', '--edits', default = 1, help = 'Number of edits you want to expand. Default: 1')
     parser.add_argument('-b', '--allowbulges', dest = 'allowbulges', action = 'store_true', help = 'allow bulges in edit expansions')
     args = parser.parse_args()
 
