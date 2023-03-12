@@ -1,5 +1,8 @@
-from itertools import combinations, product
+#!/usr/bin/env python
+
+import argparse as ap
 from collections import defaultdict
+from itertools import combinations, product
 
 def edit_expand(seq, edits = 2, ins = True, alphabet = ['A', 'G', 'C', 'T']):
     """ Compute the shell of related sequences to seed
@@ -36,4 +39,13 @@ def edit_expand(seq, edits = 2, ins = True, alphabet = ['A', 'G', 'C', 'T']):
 def expand_sequences(*args, **kwargs):
     return list(set(filter(None, edit_expand(*args, **kwargs))))
 
-gg = expand_sequences('GTC', edits = 1, ins = False)
+if __name__ == "__main__":
+    parser = ap.ArgumentParser()
+    parser.add_argument('sequence', help = 'Sequence you want to expand')
+    parser.add_argument('-e', '--edits', default = 1, help = 'Number of edits you want to expand')
+    parser.add_argument('-b', '--allowbulges', dest = 'bulges', action = 'store_true', help = 'allow bulges in edit expansions')
+    parser.set_defaults(allowbulges = False)
+    args = parser.parse_args()
+
+    print('\n'.join(expand_sequences(args.sequence, edits = int(args.edits), ins = args.allowbulges)))
+#gg = expand_sequences('GTC', edits = 1, ins = False)
