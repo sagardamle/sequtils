@@ -3,7 +3,7 @@ from collections import defaultdict
 
 def edit_expand(seq, edits = 2, ins = True, alphabet = ['A', 'G', 'C', 'T']):
     """ Compute the shell of related sequences to seed
-    i: number of edits
+    edits: number of edits
     ins: allow insertions (bulges)
     alphabet: sequence alphabet
     
